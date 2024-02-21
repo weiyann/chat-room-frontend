@@ -1,0 +1,93 @@
+.main{
+  width: 70%;
+  height: 70vh;
+  background-color: var(--white);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* 緞帶 */
+.ribbon{
+  width: 400px;
+  height: 120px;
+}
+/* 內容 */
+.login-content{
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  margin-top: 50px;
+}
+.left-content{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+.right-content{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+
+}
+.string{
+  width: 2px;
+  height: 100%;
+  background-color: var(--gray);
+  display: flex;
+  justify-content: center;
+}
+.user-image{
+  width: 200px;
+  height: 200px;
+  margin-bottom: 30px;
+}
+/* 註冊 */
+.info{
+  text-align: center;
+  font-size: var(--h6-font-size);
+}
+.account,.password{
+  font-size: var(--h6-font-size);
+  margin-bottom: 16px;
+}
+.input-account,.input-password{
+  font-size: var(--h6-font-size);
+  border: 2px solid var(--gray);
+  border-radius: 5px;
+  padding: 0px 8px;
+}
+.login-and-regist{
+  display: flex;
+  justify-content: space-around;
+}
+.btn-login{
+  border-radius: 15px;
+  border: 3px solid var(--blue-deep);
+  width: 40%;
+  background-color: var(--blue-main);
+  color: var(--white);
+  font-size: var(--h6-font-size);
+  cursor: pointer;
+}
+.btn-login:hover{
+  background-color: var(--blue-deep);
+  box-shadow: 0px 0px 5px 2px var(--pink-light);
+}
+.btn-regist{
+  border-radius: 15px;
+  border: 3px solid var(--pink-deep);
+  width: 40%;
+  background-color: var(--pink-main);
+  color: var(--white);
+  font-size: var(--h6-font-size);
+  cursor: pointer;
+}
+.btn-regist:hover{
+  background-color: var(--pink-deep);
+  box-shadow: 0px 0px 5px 2px var(--pink-light);
+}
