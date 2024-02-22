@@ -9,6 +9,11 @@
   padding: 12px;
   position: relative;
 }
+.room:hover{
+  background-color: var(--pink-light);
+  cursor: pointer;
+  outline: 5px solid var(--pink-deep);
+}
 .isLocked{
   position: absolute;
   left: 85%;
