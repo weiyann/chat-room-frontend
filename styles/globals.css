@@ -12,6 +12,7 @@
   box-sizing: border-box;
   /* font-family: 'Noto Sans TC', sans-serif; */
   font-family: HanziPenTC, sans-serif;
+  font-weight: bold;
 }
 a {
   text-decoration: none;

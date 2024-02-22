@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "@/styles/main.module.css";
 import ChatAnimation from "../lottie/chat-animation";
 import Link from "next/link";
+import { MdChangeCircle } from "react-icons/md";
 
 export default function Main() {
   return (
@@ -17,13 +18,17 @@ export default function Main() {
           />
           <div className={styles["login-content"]}>
             <div className={styles["left-content"]}>
-              <Image
-                src="/image/user-01.png"
-                alt="user-image"
-                width={200}
-                height={200}
-                className={styles["user-image"]}
-              ></Image>
+              <div className={styles["image-box"]}>
+                <Image
+                  src="/image/user-01.png"
+                  alt="user-image"
+                  width={200}
+                  height={200}
+                  className={styles["user-image"]}
+                ></Image>
+                <MdChangeCircle className={styles["image-change"]} />
+              </div>
+
               <form action="">
                 <div className={styles["account"]}>
                   <label htmlFor="account">
@@ -53,9 +58,9 @@ export default function Main() {
                   <button type="button" className={styles["btn-login"]}>
                     登入
                   </button>
-                  <button type="button" className={styles["btn-regist"]}>
+                  <Link href="/regist" className={styles["btn-regist"]}>
                     註冊
-                  </button>
+                  </Link>
                 </div>
               </form>
             </div>

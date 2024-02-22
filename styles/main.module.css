@@ -41,10 +41,26 @@
   display: flex;
   justify-content: center;
 }
+/* 頭像 */
+.image-box{
+  position: relative;
+}
 .user-image{
   width: 200px;
   height: 200px;
   margin-bottom: 30px;
+}
+.image-change{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  color: var(--pink-deep);
+  top: 160px;
+  left: 180px;
+  cursor: pointer;
+}
+.image-change:hover{
+  color: var(--pink-main);
 }
 /* 註冊 */
 .info{
@@ -86,6 +102,7 @@
   color: var(--white);
   font-size: var(--h6-font-size);
   cursor: pointer;
+  text-align: center;
 }
 .btn-regist:hover{
   background-color: var(--pink-deep);
