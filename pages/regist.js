@@ -7,7 +7,7 @@ export default function Regist() {
     <>
       <Header />
       <div className="container">
-        <div className={styles["main"]}>
+        <main className={styles["main"]}>
           <h3 className={styles["title"]}>註冊</h3>
           <form action="">
             <div className={styles["input"]}>
@@ -25,13 +25,13 @@ export default function Regist() {
             <div className={styles["input"]}>
               <label htmlFor="name">
                 請輸入密碼：
-                <input type="text" className={styles["input-style"]} />
+                <input type="password" className={styles["input-style"]} />
               </label>
             </div>
             <div className={styles["input"]}>
               <label htmlFor="name">
                 確認密碼：
-                <input type="text" className={styles["input-style"]} />
+                <input type="password" className={styles["input-style"]} />
               </label>
             </div>
             <div className={styles["submit"]}>
@@ -40,7 +40,7 @@ export default function Regist() {
               </button>
             </div>
           </form>
-        </div>
+        </main>
       </div>
     </>
   );

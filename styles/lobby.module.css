@@ -1,0 +1,68 @@
+.main{
+  width: 70%;
+  height: 70vh;
+  background-color: var(--white);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 30px 30px 30px ;
+}
+.lobby-title{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 88%;
+}
+.search-box{
+  width: 250px;
+  font-size: var(--h6-font-size);
+}
+.search-input{
+  font-size: var(--h6-font-size);
+  border: 2px solid var(--gray);
+  border-radius: 5px;
+  padding: 0px 8px;
+  width: 70%;
+}
+/* 緞帶 */
+.ribbon{
+  width: 400px;
+  height: 120px;
+}
+.btn-box{
+  width: 250px;
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-create-room{
+  padding: 4px 20px;
+  background-color: var(--pink-main);
+  color: var(--blue-deep);
+  border:3px solid var(--blue-deep);
+  border-radius: 15px;
+  font-size:var(--h6-font-size);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.btn-create-room:hover{
+  color: var(--white);
+  background-color: var(--pink-deep);
+  border:3px solid var(--pink-deep);
+
+}
+/* 全部房間 */
+.room-box{
+  width: 90%;
+  height: 80%;
+  background-color: var(--gray);
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
+  padding: 16px;
+  gap: 16px;
+  margin: auto;
+}

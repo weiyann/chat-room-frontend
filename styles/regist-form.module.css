@@ -35,11 +35,12 @@
   border: 3px solid var(--blue-deep);
   border-radius: 15px;
   background-color: var(--blue-main);
-  color: var(--white);
+  color: var(--blue-deep);
   cursor: pointer;
   font-size: var(--h6-font-size);
   padding: 4px;
 }
 .btn-submit:hover{
   background-color: var(--blue-deep);
+  color: var(--white);
 }

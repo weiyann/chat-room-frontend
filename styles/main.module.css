@@ -86,20 +86,21 @@
   border: 3px solid var(--blue-deep);
   width: 40%;
   background-color: var(--blue-main);
-  color: var(--white);
+  color: var(--blue-deep);
   font-size: var(--h6-font-size);
   cursor: pointer;
 }
 .btn-login:hover{
   background-color: var(--blue-deep);
   box-shadow: 0px 0px 5px 2px var(--pink-light);
+  color: var(--white);
 }
 .btn-regist{
   border-radius: 15px;
-  border: 3px solid var(--pink-deep);
+  border: 3px solid var(--blue-deep);
   width: 40%;
   background-color: var(--pink-main);
-  color: var(--white);
+  color: var(--blue-deep);
   font-size: var(--h6-font-size);
   cursor: pointer;
   text-align: center;
@@ -107,4 +108,6 @@
 .btn-regist:hover{
   background-color: var(--pink-deep);
   box-shadow: 0px 0px 5px 2px var(--pink-light);
+  border: 3px solid var(--pink-deep);
+  color: var(--white);
 }
