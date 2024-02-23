@@ -9,6 +9,9 @@
   padding: 12px;
   position: relative;
 }
+.room a{
+  width: 100%;
+}
 .room:hover{
   background-color: var(--pink-light);
   cursor: pointer;
@@ -38,6 +41,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  color: var(--black);
 }
 .people{
   display: flex;

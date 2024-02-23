@@ -21,18 +21,20 @@ export default function ChatAnimation() {
 
   return (
     <>
-      <Lottie
-        options={defaultOptions}
-        height={300}
-        width={300}
-        isStopped={isStopped}
-        eventListeners={[
-          {
-            eventName: "complete",
-            callback: handleAnimationStop,
-          },
-        ]}
-      />
+      <div style={{ zIndex: 0 }}>
+        <Lottie
+          options={defaultOptions}
+          height={300}
+          width={300}
+          isStopped={isStopped}
+          eventListeners={[
+            {
+              eventName: "complete",
+              callback: handleAnimationStop,
+            },
+          ]}
+        />
+      </div>
     </>
   );
 }

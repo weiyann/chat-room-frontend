@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "@/styles/room.module.css";
 import Image from "next/image";
+import Link from "next/link";
 import { FaLock } from "react-icons/fa";
 import { FaUnlock } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
@@ -9,7 +10,7 @@ import { FaCrown } from "react-icons/fa6";
 export default function Room() {
   return (
     <>
-      <div className={styles["room"]}>
+      <Link className={styles["room"]} href="/12">
         <div className={styles["isLocked"]}>
           <FaLock size={20} />
         </div>
@@ -31,7 +32,7 @@ export default function Room() {
             12
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 }

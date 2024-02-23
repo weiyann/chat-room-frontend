@@ -3,8 +3,11 @@ import styles from "@/styles/main.module.css";
 import ChatAnimation from "../lottie/chat-animation";
 import Link from "next/link";
 import { MdChangeCircle } from "react-icons/md";
+import { useState } from "react";
+import CharacterModal from "../modal/character-modal";
 
 export default function Main() {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <>
       <div className="container">
@@ -26,7 +29,18 @@ export default function Main() {
                   height={200}
                   className={styles["user-image"]}
                 ></Image>
-                <MdChangeCircle className={styles["image-change"]} />
+                <MdChangeCircle
+                  className={styles["image-change"]}
+                  onClick={() => {
+                    setOpenModal(true);
+                  }}
+                />
+                {openModal && (
+                  <CharacterModal
+                    setOpenModal={setOpenModal}
+                    openModal={openModal}
+                  />
+                )}
               </div>
 
               <form action="">
