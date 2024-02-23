@@ -3,11 +3,43 @@ import styles from "@/styles/main.module.css";
 import ChatAnimation from "../lottie/chat-animation";
 import Link from "next/link";
 import { MdChangeCircle } from "react-icons/md";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import CharacterModal from "../modal/character-modal";
+import { LOGIN } from "@/configs";
+import AuthContext from "@/context/authContext";
 
 export default function Main() {
+  const { auth, setAuth } = useContext(AuthContext);
   const [openModal, setOpenModal] = useState(false);
+  const [loginData, setLoginData] = useState({
+    account: "",
+    password: "",
+  });
+  const handleLogin = async () => {
+    //TODO:表單的驗證
+
+    try {
+      const res = await fetch(LOGIN, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
+      const data = await res.json();
+      console.log(data);
+      if (data.success) {
+        // 如果登入成功設定到localStorage
+        const { token, user_name } = data;
+        localStorage.setItem("auth", JSON.stringify({ token, user_name }));
+        setAuth({ ...auth, token: token, user_name: user_name });
+      } else {
+        alert("帳號或密碼錯誤");
+      }
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
   return (
     <>
       <div className="container">
@@ -53,6 +85,13 @@ export default function Main() {
                       id="account"
                       className={styles["input-account"]}
                       placeholder="請輸入帳號"
+                      value={loginData.account}
+                      onChange={(e) => {
+                        setLoginData({
+                          ...loginData,
+                          [e.target.name]: e.target.value,
+                        });
+                      }}
                     />
                   </label>
                 </div>
@@ -65,11 +104,24 @@ export default function Main() {
                       id="password"
                       className={styles["input-password"]}
                       placeholder="請輸入密碼"
+                      value={loginData.password}
+                      onChange={(e) => {
+                        setLoginData({
+                          ...loginData,
+                          [e.target.name]: e.target.value,
+                        });
+                      }}
                     />
                   </label>
                 </div>
                 <div className={styles["login-and-regist"]}>
-                  <button type="button" className={styles["btn-login"]}>
+                  <button
+                    type="button"
+                    className={styles["btn-login"]}
+                    onClick={() => {
+                      handleLogin();
+                    }}
+                  >
                     登入
                   </button>
                   <Link href="/regist" className={styles["btn-regist"]}>
