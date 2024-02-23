@@ -18,12 +18,23 @@
   justify-content: end;
   color: var(--black);
   font-size: var(--h6-font-size);
+  position: relative;
 }
 .input-style{
   font-size: var(--h6-font-size);
   border: 2px solid var(--gray);
   border-radius: 5px;
   padding: 0px 8px;
+}
+.input-error{
+  border: 2px solid red;
+}
+.error{
+  font-size: var(--p-sm-font-size);
+  position: absolute;
+  color: red;
+  top: 30px;
+  right: 140px;
 }
 .submit{
   margin-top: 50px;
