@@ -1,11 +1,28 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import styles from "@/styles/lobby.module.css";
 import Header from "@/components/layout/header";
 import Image from "next/image";
 import Room from "@/components/room";
 import { FaDoorOpen } from "react-icons/fa6";
+import { ROOM_LIST } from "@/configs";
 
 export default function Lobby() {
+  const [roomData, setRoomData] = useState([]); // 房間資料的狀態
+
+  // 取得資料的函式
+  const getRoomList = async () => {
+    try {
+      const res = await fetch(ROOM_LIST);
+      const data = await res.json();
+      setRoomData(data.rows);
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+  useEffect(() => {
+    getRoomList();
+  }, []);
+
   return (
     <>
       <Header />
@@ -39,17 +56,7 @@ export default function Lobby() {
           </div>
 
           <div className={styles["room-box"]}>
-            <Room />
-            <Room />
-            <Room />
-            <Room />
-            <Room />
-            <Room />
-            <Room />
-            <Room />
-            <Room />
-            <Room />
-            <Room />
+            {roomData && roomData.map((v, i) => <Room key={i} roomData={v} />)}
           </div>
         </main>
       </div>

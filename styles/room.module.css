@@ -28,17 +28,22 @@
   overflow: hidden;
   width: 100px;
   height: 100px;
-display: flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .room-name{
   font-size: var(--p-font-size);
   color: var(--black);
   text-align: center;
 }
+.room-cate{
+  font-size: var(--p-font-size);
+  color: var(--blue-deep);
+  text-align: center;
+}
 .room-info{
-  margin-top: 16px;
+  /* margin-top: 16px; */
   width: 100%;
 }
 .room-master{
@@ -52,5 +57,5 @@ align-items: center;
   align-items: center;
   gap: 12px;
   color: var(--blue-deep);
-  margin-top: 8px;
+  margin-top: 6px;
 }

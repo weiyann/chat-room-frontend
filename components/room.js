@@ -7,27 +7,31 @@ import { FaUnlock } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaCrown } from "react-icons/fa6";
 
-export default function Room() {
+export default function Room({ roomData }) {
+  console.log(roomData);
   return (
     <>
-      <Link className={styles["room"]} href="/12">
+      <Link className={styles["room"]} href={`${roomData.room_id}`}>
         <div className={styles["isLocked"]}>
-          <FaLock size={20} />
+          {roomData.room_password ? (
+            <FaLock size={20} />
+          ) : (
+            <FaUnlock size={20} />
+          )}
         </div>
         <div className={styles["room-img"]}>
-          <Image
-            src="/image/travel.png"
-            width={70}
-            height={70}
-            alt="聊天室圖片"
-          />
+          <Image src={roomData.image} width={70} height={70} alt="聊天室圖片" />
         </div>
 
-        <div className={styles["room-name"]}>貓咪的聊天室</div>
+        <div className={styles["room-name"]}>{roomData.room_name}</div>
+        <div
+          className={styles["room-cate"]}
+        >{`#${roomData.category_name}`}</div>
+
         <div className={styles["room-info"]}>
           <div className={styles["room-master"]}>
             <FaCrown size={20} color="#FFC700" />
-            貓咪達人123
+            {roomData.user_name}
           </div>
           <div className={styles["people"]}>
             <FaUser size={20} />
