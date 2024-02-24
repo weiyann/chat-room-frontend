@@ -26,7 +26,11 @@
   border: 5px solid var(--pink-main);
   border-radius: 50%;
   overflow: hidden;
-  object-fit: cover;
+  width: 100px;
+  height: 100px;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 .room-name{
   font-size: var(--p-font-size);

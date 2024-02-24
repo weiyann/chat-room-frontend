@@ -65,7 +65,7 @@
 /* 註冊 */
 .info{
   text-align: center;
-  font-size: var(--h6-font-size);
+  font-size: var(--h5-font-size);
 }
 .account,.password{
   font-size: var(--h6-font-size);
@@ -109,5 +109,27 @@
   background-color: var(--pink-deep);
   box-shadow: 0px 0px 5px 2px var(--pink-light);
   border: 3px solid var(--pink-deep);
+  color: var(--white);
+}
+
+/* 登入後 */
+.welcome{
+  color: var(--black);
+  font-size: var(--h5-font-size);
+}
+.to-lobby{
+  background-color: var(--blue-main);
+  font-size: var(--h6-font-size);
+  cursor: pointer;
+  margin-top: 40px;
+  padding: 6px 30px;
+  border-radius: 20px;
+  color: var(--blue-deep);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.to-lobby:hover{
+  background-color: var(--blue-deep);
   color: var(--white);
 }

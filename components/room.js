@@ -14,13 +14,15 @@ export default function Room() {
         <div className={styles["isLocked"]}>
           <FaLock size={20} />
         </div>
-        <Image
-          src="/image/cat.jpg"
-          width={100}
-          height={100}
-          alt="聊天室圖片"
-          className={styles["room-img"]}
-        />
+        <div className={styles["room-img"]}>
+          <Image
+            src="/image/travel.png"
+            width={70}
+            height={70}
+            alt="聊天室圖片"
+          />
+        </div>
+
         <div className={styles["room-name"]}>貓咪的聊天室</div>
         <div className={styles["room-info"]}>
           <div className={styles["room-master"]}>

@@ -3,9 +3,14 @@ import Image from "next/image";
 import charcterData from "@/data/character.json";
 import { useState, useEffect } from "react";
 
-export default function CharacterModal({ setOpenModal, openModal }) {
+export default function CharacterModal({
+  setOpenModal,
+  openModal,
+  isChosen,
+  setIsChosen,
+}) {
   const [character, setCharacter] = useState([]);
-  const [isChosen, setIsChosen] = useState("");
+  const [chosen, setChosen] = useState({});
 
   // 設定所有角色圖片狀態
   useEffect(() => {
@@ -24,11 +29,11 @@ export default function CharacterModal({ setOpenModal, openModal }) {
                 width={200}
                 height={200}
                 className={`${styles["user-img"]} ${
-                  v.id === isChosen ? styles["img-active"] : ""
+                  v.id === chosen.id ? styles["img-active"] : ""
                 }`}
                 key={v.id}
                 onClick={() => {
-                  setIsChosen(v.id);
+                  setChosen(v);
                 }}
               />
             ))}
@@ -43,7 +48,15 @@ export default function CharacterModal({ setOpenModal, openModal }) {
             >
               取消
             </button>
-            <button className={styles["btn-choose"]}>選擇圖片</button>
+            <button
+              className={styles["btn-choose"]}
+              onClick={() => {
+                setIsChosen(chosen);
+                setOpenModal(false);
+              }}
+            >
+              選擇圖片
+            </button>
           </div>
         </div>
       </div>
