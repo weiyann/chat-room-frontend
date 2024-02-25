@@ -1,0 +1,42 @@
+[
+  {
+      "category_id": 1,
+      "category_name": "閒聊",
+      "image": "/image/messenger.png"
+  },
+  {
+      "category_id": 2,
+      "category_name": "食物",
+      "image": "/image/food.png"
+  },
+  {
+      "category_id": 3,
+      "category_name": "感情",
+      "image": "/image/emo.png"
+  },
+  {
+      "category_id": 4,
+      "category_name": "遊戲",
+      "image": "/image/game.png"
+  },
+  {
+      "category_id": 5,
+      "category_name": "工作",
+      "image": "/image/job.png"
+  },
+  {
+      "category_id": 6,
+      "category_name": "寵物",
+      "image": "/image/pets.png"
+  },
+  {
+      "category_id": 7,
+      "category_name": "運動",
+      "image": "/image/sports.png"
+  },
+  {
+      "category_id": 8,
+      "category_name": "旅遊",
+      "image": "/image/travel.png"
+  }
+]

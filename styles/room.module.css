@@ -45,6 +45,9 @@
 .room-info{
   /* margin-top: 16px; */
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
 }
 .room-master{
   display: flex;
@@ -57,5 +60,5 @@
   align-items: center;
   gap: 12px;
   color: var(--blue-deep);
-  margin-top: 6px;
+
 }

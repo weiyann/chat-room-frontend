@@ -5,9 +5,11 @@ import Image from "next/image";
 import Room from "@/components/room";
 import { FaDoorOpen } from "react-icons/fa6";
 import { ROOM_LIST } from "@/configs";
+import CreateRoomModal from "@/components/modal/create-room-modal";
 
 export default function Lobby() {
   const [roomData, setRoomData] = useState([]); // 房間資料的狀態
+  const [openModal, setOpenModal] = useState(false);
 
   // 取得資料的函式
   const getRoomList = async () => {
@@ -48,7 +50,12 @@ export default function Lobby() {
               className={styles["ribbon"]}
             />
             <div className={styles["btn-box"]}>
-              <button className={styles["btn-create-room"]}>
+              <button
+                className={styles["btn-create-room"]}
+                onClick={() => {
+                  setOpenModal(true);
+                }}
+              >
                 <FaDoorOpen size={25} />
                 創建房間
               </button>
@@ -58,6 +65,7 @@ export default function Lobby() {
           <div className={styles["room-box"]}>
             {roomData && roomData.map((v, i) => <Room key={i} roomData={v} />)}
           </div>
+          {openModal && <CreateRoomModal setOpenModal={setOpenModal} />}
         </main>
       </div>
     </>
