@@ -29,7 +29,7 @@ export default function Room({ roomData }) {
         >{`#${roomData.category_name}`}</div>
 
         <div className={styles["room-info"]}>
-          <div className={styles["room-master"]}>
+          <div className={styles["room-admin"]}>
             <FaCrown size={20} color="#FFC700" />
             {roomData.user_name}
           </div>

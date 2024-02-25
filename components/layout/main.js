@@ -33,15 +33,16 @@ export default function Main() {
       console.log(data);
       if (data.success) {
         // 如果登入成功設定到localStorage
-        const { token, user_name } = data;
+        const { token, user_name, user_id } = data;
         localStorage.setItem(
           "auth",
-          JSON.stringify({ token, user_name, imageChosen })
+          JSON.stringify({ token, user_name, imageChosen, user_id })
         );
         setAuth({
           ...auth,
           token: token,
           user_name: user_name,
+          user_id: user_id,
         });
       } else {
         alert("帳號或密碼錯誤");

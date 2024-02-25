@@ -9,3 +9,6 @@ export const LOGIN = API_SERVER + "/api/login"; // post
 
 // 取得所有房間
 export const ROOM_LIST = API_SERVER + "/room"; // get
+
+// 創建房間
+export const CREATE_ROOM = API_SERVER + "/room/create-room"; // post
