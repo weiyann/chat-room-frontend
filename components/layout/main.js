@@ -51,6 +51,7 @@ export default function Main() {
       console.log(ex);
     }
   };
+
   return (
     <>
       <div className="container">
@@ -85,6 +86,7 @@ export default function Main() {
                     openModal={openModal}
                     isChosen={imageChosen}
                     setIsChosen={setImageChosen}
+                    auth={auth}
                   />
                 )}
               </div>
@@ -149,7 +151,13 @@ export default function Main() {
                   <div className={styles["welcome"]}>
                     歡迎！ {auth.user_name}
                   </div>
-                  <Link href="/lobby" className={styles["to-lobby"]}>
+                  <Link
+                    href="/lobby"
+                    className={styles["to-lobby"]}
+                    onClick={() => {
+                      handleChangeImage();
+                    }}
+                  >
                     前往大廳 <FaArrowRightToBracket size={24} />
                   </Link>
                 </>

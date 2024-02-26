@@ -6,6 +6,8 @@ import Room from "@/components/room";
 import { FaDoorOpen } from "react-icons/fa6";
 import { ROOM_LIST } from "@/configs";
 import CreateRoomModal from "@/components/modal/create-room-modal";
+import { TiArrowBack } from "react-icons/ti";
+import Link from "next/link";
 
 export default function Lobby() {
   const [roomData, setRoomData] = useState([]); // 房間資料的狀態
@@ -40,6 +42,11 @@ export default function Lobby() {
                   placeholder="請輸入關鍵字"
                 />
               </label>
+
+              <Link href="/" className={styles["page-back"]}>
+                <TiArrowBack size={40} />
+                回上頁
+              </Link>
             </div>
 
             <Image

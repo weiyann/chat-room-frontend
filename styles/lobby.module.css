@@ -25,6 +25,16 @@
   padding: 0px 8px;
   width: 70%;
 }
+.page-back{
+  color: var(--blue-main);
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+}
+.page-back:hover{
+  color: var(--blue-deep);
+}
 /* 緞帶 */
 .ribbon{
   width: 400px;

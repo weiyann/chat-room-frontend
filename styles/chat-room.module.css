@@ -3,13 +3,46 @@
   height: 70vh;
   background-color: var(--white);
   border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 30px 30px 30px ;
+  gap: 20px;
+}
+/* 標題 */
+.title{
+  height: 8%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin:auto;
+  padding: 0 30px;
+  gap: 30px;
+}
+.page-back{
+  color: var(--blue-main);
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: var(--h6-font-size);
+}
+.page-back:hover{
+  color: var(--blue-deep);
+}
+.room_name{
+  font-size: var(--h6-font-size);
+  color: var(--black);
+}
+.category_name{
+  font-size: var(--h6-font-size);
+  color: var(--black);
+}
+.content{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30px 30px 30px 30px ;
   gap: 20px;
+  height: 92%;
 }
-
 /* 房間裡的人 */
 .member-box{
   width: 25%;

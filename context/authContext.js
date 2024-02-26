@@ -1,4 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
+import { useRouter } from "next/router";
 
 export const AuthContext = createContext({});
 export default AuthContext;
@@ -9,6 +10,7 @@ export const AuthProvider = ({ children }) => {
     id: 1,
     src: "/image/user-01.png",
   });
+  const router = useRouter();
 
   //  登出的函式
   const logout = () => {
@@ -16,6 +18,7 @@ export const AuthProvider = ({ children }) => {
 
     setAuth({});
     setImageChosen({ id: 1, src: "/image/user-01.png" });
+    router.push("/");
   };
 
   useEffect(() => {

@@ -8,7 +8,6 @@ import { FaUser } from "react-icons/fa";
 import { FaCrown } from "react-icons/fa6";
 
 export default function Room({ roomData }) {
-  console.log(roomData);
   return (
     <>
       <Link className={styles["room"]} href={`${roomData.room_id}`}>

@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styles from "@/styles/regist-form.module.css";
 import Header from "@/components/layout/header";
 import { REGIST } from "@/configs";
 import { useRouter } from "next/router";
+import AuthContext from "@/context/authContext";
 
 export default function Regist() {
   const router = useRouter();
+  const { imageChosen } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     user_name: "",
     account: "",
     password: "",
     password_confirmed: "",
+    user_img: imageChosen.src,
   });
   const [isSubmmited, setIsSubmitted] = useState(false);
   const sendData = async () => {

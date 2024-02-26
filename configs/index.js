@@ -12,3 +12,9 @@ export const ROOM_LIST = API_SERVER + "/room"; // get
 
 // 創建房間
 export const CREATE_ROOM = API_SERVER + "/room/create-room"; // post
+
+// 取得單一房間資料
+export const CHATROOM = API_SERVER + "/room/chatroom"; // get
+
+// 更換圖片
+export const CHANGE_IMG = API_SERVER + "/change-img"; // put
