@@ -25,7 +25,7 @@ export default function ChatRoom() {
   };
   useEffect(() => {
     getChatRoomData();
-  }, [router.query.rid]);
+  }, [rid]);
 
   return (
     <>
@@ -46,7 +46,7 @@ export default function ChatRoom() {
           </div>
           <div className={styles["content"]}>
             <RoomMembers chatRoomData={chatRoomData} />
-            <MessageContent />
+            <MessageContent chatRoomData={chatRoomData} />
           </div>
         </main>
       </div>

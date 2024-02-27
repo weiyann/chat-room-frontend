@@ -4,20 +4,26 @@ import Image from "next/image";
 import { FaCrown } from "react-icons/fa6";
 
 export default function MemberCard({ memberData }) {
+  console.log(memberData);
   return (
     <>
       <div className={styles["member-card"]}>
         <div className={styles["member-img"]}>
-          <FaCrown className={styles["crown"]} size={30} />
+          {memberData.level == "admin" ? (
+            <FaCrown className={styles["crown"]} size={30} />
+          ) : (
+            ""
+          )}
+
           <Image
-            src="/image/user-04.png"
+            src={memberData.user_img}
             alt="user-img"
             width={60}
             height={60}
           />
         </div>
 
-        <div className={styles["member-name"]}>WeiYann</div>
+        <div className={styles["member-name"]}>{memberData.user_name}</div>
       </div>
     </>
   );
