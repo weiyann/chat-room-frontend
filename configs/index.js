@@ -18,3 +18,6 @@ export const CHATROOM = API_SERVER + "/room/chatroom"; // get
 
 // 更換圖片
 export const CHANGE_IMG = API_SERVER + "/change-img"; // put
+
+// 進入房間
+export const ENTER_ROOM = API_SERVER + "/room/enter-room"; // post

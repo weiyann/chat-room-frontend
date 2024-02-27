@@ -14,21 +14,42 @@ export default function MessageContent({ chatRoomData }) {
   const [messageInput, setMessageInput] = useState("");
 
   const room_id = router.query.rid;
+  const userName = auth.user_name;
 
   useEffect(() => {
     const newSocket = io(API_SERVER);
     setSocket(newSocket); // 設定 Socket.io 連接狀態
 
     newSocket.on("connect", () => {
-      newSocket.emit("join_room", room_id);
+      newSocket.emit("join_room", room_id, userName);
     });
 
     newSocket.on("chat_message", (msg) => {
       setMessages((prevMessages) => [...prevMessages, msg]);
     });
 
+    newSocket.on("user_joined", (userName) => {
+      // 加入聊天室
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        `${userName} 加入了聊天室`,
+      ]);
+    });
+
+    newSocket.on("user_left", (userName) => {
+      // 離開聊天室
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        `${userName} 離開了聊天室`,
+      ]);
+    });
+
     // 在組件卸載時關閉 Socket.io 連接
     return () => {
+      if (socket) {
+        console.log("123");
+        socket.emit("leave_room", room_id, userName);
+      }
       newSocket.disconnect();
     };
   }, [room_id]);
@@ -54,28 +75,30 @@ export default function MessageContent({ chatRoomData }) {
       <div className={styles["message-content"]}>
         <div className={styles["message-box"]}>
           {messages &&
-            messages.map((v, i) =>
-              // 判斷是自己發送的還是其他人發送的訊息
-              v.senderId !== auth.token ? (
-                <div key={i} className={styles["other-message"]}>
-                  <Image
-                    src={v.userImage}
-                    alt="user-img"
-                    width={40}
-                    height={40}
-                  />
-                  <div className={styles["name-and-message"]}>
-                    <div className={styles["chat-member"]}>{v.userName}</div>
+            messages.map((v, i) => (
+              <div key={i} className={styles["message"]}>
+                {typeof v === "string" ? (
+                  <p>{v}</p>
+                ) : v.senderId !== auth.token ? (
+                  <div className={styles["other-message"]}>
+                    <Image
+                      src={v.userImage}
+                      alt="user-img"
+                      width={40}
+                      height={40}
+                    />
+                    <div className={styles["name-and-message"]}>
+                      <div className={styles["chat-member"]}>{v.userName}</div>
+                      <p>{v.message}</p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className={styles["my-message"]}>
                     <p>{v.message}</p>
                   </div>
-                </div>
-              ) : (
-                // 如果是当前用户发送的消息，则返回当前用户的消息
-                <div key={i} className={styles["my-message"]}>
-                  <p>{v.message}</p>
-                </div>
-              )
-            )}
+                )}
+              </div>
+            ))}
         </div>
         <div className={styles["input-box"]}>
           <input
