@@ -1,12 +1,14 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import styles from "@/styles/enter-password-modal.module.css";
 import { useRouter } from "next/router";
 import { ENTER_ROOM } from "@/configs";
-import AuthContext from "@/context/authContext";
 
-export default function EnterPasswordModal({ setOpenPasswordModal, roomData }) {
+export default function EnterPasswordModal({
+  setOpenPasswordModal,
+  roomData,
+  auth,
+}) {
   const router = useRouter();
-  const { auth } = useContext(AuthContext);
   const [password, setPassword] = useState("");
 
   const submitPassword = async () => {

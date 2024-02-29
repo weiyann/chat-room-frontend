@@ -12,7 +12,6 @@ import Link from "next/link";
 export default function Lobby() {
   const [roomData, setRoomData] = useState([]); // 房間資料的狀態
   const [openModal, setOpenModal] = useState(false);
-  const [openPasswordModal, setOpenPasswordModal] = useState(false);
 
   // 取得資料的函式
   const getRoomList = async () => {

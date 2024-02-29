@@ -21,3 +21,6 @@ export const CHANGE_IMG = API_SERVER + "/change-img"; // put
 
 // 進入房間
 export const ENTER_ROOM = API_SERVER + "/room/enter-room"; // post
+
+// 離開房間刪除用戶資料
+export const LEAVE_ROOM = API_SERVER + "/room/leave-room"; // delete

@@ -5,15 +5,39 @@ import { FaLock } from "react-icons/fa";
 import { FaUnlock } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaCrown } from "react-icons/fa6";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import EnterPasswordModal from "@/components/modal/enter-password-modal";
+import { ENTER_ROOM } from "@/configs";
+import AuthContext from "@/context/authContext";
 
 export default function Room({ roomData }) {
+  const { auth } = useContext(AuthContext);
   const router = useRouter();
   const [openPasswordModal, setOpenPasswordModal] = useState({
     id: "",
     isOpened: false,
   });
+
+  const enterRoom = async () => {
+    try {
+      const res = await fetch(ENTER_ROOM, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          room_id: roomData.room_id,
+          user_id: auth.user_id,
+        }),
+      });
+      const data = await res.json(0);
+      if (data.success) {
+        router.push(`/${roomData.room_id}`);
+      }
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
 
   const handleRoomClick = (roomId) => {
     if (roomData.room_password) {
@@ -22,7 +46,7 @@ export default function Room({ roomData }) {
         isOpened: true,
       });
     } else {
-      router.push(`/${roomId}`);
+      enterRoom();
     }
   };
 
@@ -66,6 +90,7 @@ export default function Room({ roomData }) {
           <EnterPasswordModal
             setOpenPasswordModal={setOpenPasswordModal}
             roomData={roomData}
+            auth={auth}
           />
         )}
     </>

@@ -5,15 +5,25 @@ import MessageContent from "@/components/message-content";
 import { TiArrowBack } from "react-icons/ti";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { CHATROOM } from "@/configs";
+import { useEffect, useState, useContext } from "react";
+import AuthContext from "@/context/authContext";
+import { CHATROOM, LEAVE_ROOM } from "@/configs";
+import useSocket from "@/hooks/useSocket";
 
 export default function ChatRoom() {
+  const { auth } = useContext(AuthContext);
+  const { imageChosen } = useContext(AuthContext);
   const router = useRouter();
-  // console.log(router.query.rid);
   const rid = router.query.rid;
-  const [chatRoomData, setChatRoomData] = useState([]);
+  const userId = auth.user_id;
+  // console.log(uid);
+  const userName = auth.user_name;
+  const userImage = imageChosen.src;
+  const socket = useSocket(rid, userName, userImage, userId);
 
+  const [chatRoomData, setChatRoomData] = useState([]);
+  const [users, setUsers] = useState([]);
+  // console.log(users);
   const getChatRoomData = async () => {
     try {
       const res = await fetch(CHATROOM + `/${rid}`);
@@ -23,9 +33,43 @@ export default function ChatRoom() {
       console.log(ex);
     }
   };
+
+  // 刪除房間用戶資料
+  const deleteMemberData = async (userId) => {
+    try {
+      const res = await fetch(LEAVE_ROOM + `?uid=${userId}`, {
+        method: "DELETE",
+      });
+      const data = res.json();
+      console.log(data);
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+
   useEffect(() => {
     getChatRoomData();
-  }, [rid]);
+  }, [rid, users]);
+
+  useEffect(() => {
+    if (!socket) return;
+    socket.on("user_members", (userData) => {
+      setUsers((prevUsers) => [...prevUsers, userData]);
+    });
+
+    //  監聽斷連事件
+    socket.on("user_disconnected", (userId) => {
+      console.log(userId);
+      setUsers((prevUsers) =>
+        prevUsers.filter((user) => user.userId !== userId)
+      );
+      deleteMemberData(userId);
+    });
+  }, [socket]);
+
+  // useEffect(() => {
+  //   deleteMemberData();
+  // }, [users]);
 
   return (
     <>
@@ -45,8 +89,8 @@ export default function ChatRoom() {
             </div>
           </div>
           <div className={styles["content"]}>
-            <RoomMembers chatRoomData={chatRoomData} />
-            <MessageContent chatRoomData={chatRoomData} />
+            <RoomMembers users={users} chatRoomData={chatRoomData} />
+            <MessageContent socket={socket} auth={auth} />
           </div>
         </main>
       </div>

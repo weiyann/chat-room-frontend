@@ -1,73 +1,57 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useState } from "react";
 import styles from "@/styles/chat-room.module.css";
 import Image from "next/image";
-import { io } from "socket.io-client";
-import { API_SERVER } from "@/configs";
 import { useRouter } from "next/router";
-import AuthContext from "@/context/authContext";
 
-export default function MessageContent({ chatRoomData }) {
-  const { auth } = useContext(AuthContext);
-  const [socket, setSocket] = useState(null); // 儲存 Socket.io 連接的狀態
+export default function MessageContent({ socket, auth }) {
   const router = useRouter();
   const [messages, setMessages] = useState([]);
   const [messageInput, setMessageInput] = useState("");
 
   const room_id = router.query.rid;
-  const userName = auth.user_name;
 
   useEffect(() => {
-    const newSocket = io(API_SERVER);
-    setSocket(newSocket); // 設定 Socket.io 連接狀態
+    if (!socket) return;
 
-    newSocket.on("connect", () => {
-      newSocket.emit("join_room", room_id, userName);
-    });
-
-    newSocket.on("chat_message", (msg) => {
+    socket.on("chat_message", (msg) => {
       setMessages((prevMessages) => [...prevMessages, msg]);
     });
 
-    newSocket.on("user_joined", (userName) => {
-      // 加入聊天室
+    socket.on("user_joined", (userName) => {
       setMessages((prevMessages) => [
         ...prevMessages,
         `${userName} 加入了聊天室`,
       ]);
     });
 
-    newSocket.on("user_left", (userName) => {
-      // 離開聊天室
+    socket.on("user_left", (userName) => {
       setMessages((prevMessages) => [
         ...prevMessages,
         `${userName} 離開了聊天室`,
       ]);
     });
 
-    // 在組件卸載時關閉 Socket.io 連接
     return () => {
-      if (socket) {
-        console.log("123");
-        socket.emit("leave_room", room_id, userName);
-      }
-      newSocket.disconnect();
+      socket.off("chat_message");
+      socket.off("user_joined");
+      socket.off("user_left");
     };
-  }, [room_id]);
+  }, [socket]);
 
   const sendMessage = () => {
-    if (socket && auth.token && auth.user_name && auth.imageChosen.src) {
-      const senderId = auth.token;
-      const userName = auth.user_name;
-      const userImage = auth.imageChosen.src;
-      socket.emit("chat_message", {
-        room_id,
-        message: messageInput,
-        senderId,
-        userName,
-        userImage,
-      });
-      setMessageInput("");
-    }
+    if (!socket || !auth.token || !auth.user_name || !auth.imageChosen.src)
+      return;
+    const userName = auth.user_name;
+    const senderId = auth.token;
+    const userImage = auth.imageChosen.src;
+    socket.emit("chat_message", {
+      room_id,
+      message: messageInput,
+      senderId,
+      userName,
+      userImage,
+    });
+    setMessageInput("");
   };
 
   return (
