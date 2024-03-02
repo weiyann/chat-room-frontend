@@ -154,9 +154,9 @@ export default function Main() {
                   <Link
                     href="/lobby"
                     className={styles["to-lobby"]}
-                    onClick={() => {
-                      handleChangeImage();
-                    }}
+                    // onClick={() => {
+                    //   handleChangeImage();
+                    // }}
                   >
                     前往大廳 <FaArrowRightToBracket size={24} />
                   </Link>

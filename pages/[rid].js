@@ -90,7 +90,11 @@ export default function ChatRoom() {
           </div>
           <div className={styles["content"]}>
             <RoomMembers users={users} chatRoomData={chatRoomData} />
-            <MessageContent socket={socket} auth={auth} />
+            <MessageContent
+              socket={socket}
+              auth={auth}
+              imageChosen={imageChosen}
+            />
           </div>
         </main>
       </div>

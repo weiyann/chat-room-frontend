@@ -3,7 +3,7 @@ import styles from "@/styles/chat-room.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-export default function MessageContent({ socket, auth }) {
+export default function MessageContent({ socket, auth, imageChosen }) {
   const router = useRouter();
   const [messages, setMessages] = useState([]);
   const [messageInput, setMessageInput] = useState("");
@@ -39,12 +39,11 @@ export default function MessageContent({ socket, auth }) {
   }, [socket]);
 
   const sendMessage = () => {
-    if (!socket || !auth.token || !auth.user_name || !auth.imageChosen.src)
-      return;
+    if (!socket || !auth.token || !auth.user_name || !imageChosen) return;
 
     const userName = auth.user_name;
     const senderId = auth.token;
-    const userImage = auth.imageChosen.src;
+    const userImage = imageChosen.src;
     socket.emit("chat_message", {
       room_id,
       message: messageInput,

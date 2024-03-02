@@ -20,6 +20,7 @@ export default function MemberCard({ memberData }) {
             alt="user-img"
             width={60}
             height={60}
+            className={styles["member-img"]}
           />
         </div>
 
