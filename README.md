@@ -13,13 +13,25 @@ CHAT CHAT 是一個線上的即時聊天平台，用戶可以在網站上註冊�
 3. 使用 socket.io 呈現即時互動的聊天室
 4. 使用 bcrypt 和 jwt 實現會員登入
 
-## 實際操作畫面
+## demo畫面
 
 ### 註冊和登入
 
+
+https://github.com/weiyann/chat-room-frontend/assets/147689168/e3cb83b0-03e4-4847-853e-dc44d520804b
+
+
 ### 創建房間
 
+
+https://github.com/weiyann/chat-room-frontend/assets/147689168/f52c9fbb-d3fe-4e2c-b884-f0f08a0faa4e
+
+
 ### 聊天室
+
+
+https://github.com/weiyann/chat-room-frontend/assets/147689168/7a75af1c-e9ce-4bf1-8887-6316601dc68b
+
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
