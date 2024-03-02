@@ -8,12 +8,14 @@ export default function Header() {
     <>
       <header className={styles["header"]}>
         <div className={styles["container"]}>
+          <div className={styles["title-left"]}></div>
           <div className={styles["title"]}>CHAT CHAT</div>
           <button
             onClick={() => {
               alert("已登出");
               logout();
             }}
+            className={styles["title-right"]}
           >
             登出
           </button>

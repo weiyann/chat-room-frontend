@@ -41,6 +41,7 @@ export default function MessageContent({ socket, auth }) {
   const sendMessage = () => {
     if (!socket || !auth.token || !auth.user_name || !auth.imageChosen.src)
       return;
+
     const userName = auth.user_name;
     const senderId = auth.token;
     const userImage = auth.imageChosen.src;
@@ -52,6 +53,12 @@ export default function MessageContent({ socket, auth }) {
       userImage,
     });
     setMessageInput("");
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      sendMessage();
+    }
   };
 
   return (
@@ -91,9 +98,10 @@ export default function MessageContent({ socket, auth }) {
             placeholder="在這裡輸入聊天訊息"
             value={messageInput}
             onChange={(e) => setMessageInput(e.target.value)}
+            onKeyUp={handleKeyDown}
           />
 
-          <form action="">
+          <form>
             <button
               type="button"
               className={styles["btn-enter"]}

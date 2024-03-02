@@ -20,7 +20,7 @@ export default function CharacterModal({
     }
     try {
       const res = await fetch(
-        CHANGE_IMG + `?user_id=${auth.user_id}&user_img=${isChosen.src}`,
+        CHANGE_IMG + `?user_id=${auth.user_id}&user_img=${chosen.src}`,
         { method: "PUT" }
       );
       const data = await res.json();
@@ -70,8 +70,9 @@ export default function CharacterModal({
               className={styles["btn-choose"]}
               onClick={() => {
                 setIsChosen(chosen);
-                changeSqlImage();
                 setOpenModal(false);
+
+                changeSqlImage();
               }}
             >
               選擇圖片
